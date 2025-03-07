@@ -1,0 +1,281 @@
+* {
+  /* border: 1px solid black; */
+  padding: 0;
+  margin: 0;
+  --dark-blue-primary: #264653;
+
+  --dark-green-seconary: #2A9D8F;
+  --yellow-secondary: #F4A261;
+  --dark-title-text-blue-seconary: #073B4C;
+  --light-description-text-grey-seconary: #8D99AE;
+  --light-card-bg-grey-secondary: #EDF2F4;
+
+  --light-green-accent: #06D6A0;
+  --dark-red-accent: #EF476F;
+  --light-red-accent: #EF233C;
+}
+
+.main-content {
+  display: flex;
+  height: 100vh;
+}
+
+.main-content > * {
+  flex-basis: 100%;
+}
+
+.todo-container {
+  flex-grow: 1;
+  min-width: 20em;
+}
+
+.todo-heading {
+  height: 5em;
+  background-color: var(--yellow-secondary);
+}
+
+.todo-heading p {
+  font-size: 1.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: var(--dark-title-text-blue-seconary);
+  width: fit-content;
+  position: relative;
+
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+}
+
+.contents {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  padding: 1em;
+  height: 100%;
+  
+  background-color: var(--dark-blue-primary);
+  overflow: auto;
+}
+
+/* TODO item */
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(150px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(150px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.todo-item {
+  display: flex;
+  min-height: 5em;
+  border-radius: 10px;
+}
+
+.todo-item.adding {
+  animation: slideInDown 1s ease, fadeIn 0.3s ease;
+}
+
+.todo-item.removing {
+  animation: fadeOut 0.3s ease;
+}
+
+.priority {
+  width: 3em;
+  border-radius: 10px 0 0 10px;
+  background-color: var(--light-card-bg-grey-secondary);
+}
+
+.text-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 50%;
+
+  background-color: var(--light-card-bg-grey-secondary);
+  padding: 0.7em 0.5em;
+}
+
+.title {
+  display: flex;
+  align-items: last baseline;
+}
+
+.title p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2em;
+  color: var(--dark-title-text-blue-seconary);
+  font-weight: bold;
+  width: fit-content;
+}
+
+.description {
+  flex-grow: 1;
+  display: flex;
+  align-items: first baseline;
+}
+
+.description p{
+  color: var(--light-description-text-grey-seconary);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  width: fit-content;
+}
+
+.next {
+  width: 5em;
+  border-radius: 0 10px 10px 0;
+  background-color: var(--dark-green-seconary);
+  color: var(--dark-title-text-blue-seconary);
+}
+
+.next svg {
+  width: 3em;
+  height: 3em;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: inherit;
+}
+
+.action-btn {
+  position: fixed;
+  border: none;
+  background-color: var(--yellow-secondary);
+  height: 6em;
+  width: 6em;
+
+  left: 1.2em;
+  bottom: 1.2em;
+  border-radius: 10px;
+
+  box-shadow: 0 0 10px 5px var(--dark-blue-primary);
+  transition: all 0.2s ease;
+}
+
+.action-btn svg {
+  width: 3em;
+  height: 3em;
+
+  color: var(--dark-blue-primary);
+}
+
+.delete {
+  width: 5em;
+  border-radius: 0 10px 10px 0;
+  background-color: var(--dark-red-accent);
+  color: var(--dark-title-text-blue-seconary);
+}
+
+.delete svg {
+  width: 3em;
+  height: 3em;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 0 10px 10px 0;
+  color: inherit;
+}
+
+/* CSS Effects */
+
+.next:hover {
+  background-color: var(--light-green-accent);
+  color: var(--light-card-bg-grey-secondary);
+}
+
+.delete:hover {
+  background-color: var(--light-red-accent);
+  color: var(--light-card-bg-grey-secondary);
+}
+
+.action-btn:hover {
+  left: 0.9em;
+  bottom: 0.9em;
+
+  width: 6.6em;
+  height: 6.6em;
+}
+
+.check {
+  width: 5em;
+  border-radius: 0 10px 10px 0;
+  background-color: var(--dark-green-seconary);
+  color: var(--dark-title-text-blue-seconary);
+}
+
+.check svg {
+  width: 2.6em;
+  height: 2.6em;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: inherit;
+}
+
+.check:hover {
+  background-color: var(--light-green-accent);
+  color: var(--light-card-bg-grey-secondary);
+}
+
+#save {
+  left: auto;
+  right: 1.2em;
+}
+
+#save:hover {
+  right: 0.9em;
+  left: auto;
+}
+
+#reset {
+  left: auto;
+  right: calc(6em + 3em);
+}
+
+#reset:hover {
+  right: 8.7em;
+  left: auto;
+}
